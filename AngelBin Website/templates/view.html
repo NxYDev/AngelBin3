@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ paste.name }} - AngelBin</title>
+    <style>
+        :root {
+            --dark-green: #1a472a;
+            --medium-green: #2c5530;
+            --light-green: #5abf73;
+            --off-white: #f0f0f0;
+        }
+
+        body {
+            background-color: #0a1929;
+            color: var(--off-white);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: var(--dark-green);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: #122f44;
+            padding: 20px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .badge {
+            background-color: var(--light-green);
+            color: black;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .badge.private {
+            background-color: #ffc107;
+        }
+
+        .actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: var(--medium-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ paste.name }}</h1>
+            <div>
+                <span class="badge">Views: {{ paste.views }}</span>
+                {% if paste.private %}
+                <span class="badge private">Private</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <pre>{{ paste.content }}</pre>
+
+        <div class="actions">
+            <a href="/{{ paste.id }}/raw" class="btn">View Raw</a>
+            <a href="/" class="btn">New Paste</a>
+        </div>
+    </div>
+</body>
+</html>
