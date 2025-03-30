@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, abort
-from pathlib import Path
 import sqlite3
 import uuid
 from datetime import datetime
+import os
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
 DB_PATH = 'pastes.db'
 
@@ -84,4 +84,5 @@ def raw_paste(paste_id):
     return render_template('raw.html', content=content[0])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
