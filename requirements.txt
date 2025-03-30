@@ -1,1 +1,4 @@
 discord.py
+Flask==3.0.0
+Werkzeug==3.0.1  # Required for Flask
+Jinja2==3.1.2    # Required for `render_template`
